@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = null;
+}
+<h2>@ViewBag.Title.</h2>
+
+
+@Scripts.Render(Url.Content("~/Scripts/jquery-1.10.2.min.js"))
+@Scripts.Render(Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js"))
+
+
+
+
+<script type="text/javascript">
+    
+
+    function resetColors() {
+        var list = document.getElementById("list");
+        var chlids = list.childNodes;
+
+        for (var i = 0; i < chlids.length; i++) {
+            chlids[i].style.color = "black";
+        }
+    }
+
+   
+
+    var node = null;
+    window.onload = function () {
+        
+        document.getElementById("submit").onclick = function () {
+
+            window.sessionStorage.key2 = "fsd fdgdf gdfg";
+            var element = document.getElementById("list");
+
+            if (element.style.display === "block") {
+                element.style.display = "none";
+            } else {
+                element.style.display = "block";
+            }
+            
+          //  document.write(result);
+        }
+    }
+
+    //$(document).ready(function() {
+    //    $('#submit').click(function(e) {
+    //        e.preventDefault();
+    //        //alert(history.prototype.browser.version);
+    //        console.w('434343');
+    //        // var name = $('#search').val();
+    //        // name = encodeURIComponent(name);
+
+    //    });
+    //});
+
+    //    (function() {
+    //        function Human(name) {
+
+    //            this.name = name;
+
+    //            this.talk = function(text) {
+    //                alert("Talking from human: " + text);
+    //            }
+    //        }
+
+    //        function Student(name) {
+
+    //            this.name = name;
+
+    //            this.talk = function (text) {
+    //                alert("Talking from Student: " + text);
+    //            }
+    //        }
+    //    });
+
+    
+    //function Worker(name) {
+
+    //    this.name = name;
+    //}
+
+
+    //function Run(x,y,z) {
+
+    //    var human = new Human("ny name Human");
+
+    //   // Student.prototype = human;
+    //   // Worker.prototype = human;
+
+    //    var student = new Student("my name Student");
+    //    var worker = new Worker("my name Worker");
+
+
+    //    if (student instanceof Worker) {
+            
+        
+    //        student.talk("I'm worker");
+    //    }
+
+    //}
+
+
+</script>
+
+<p>Use this area to provide additional information.</p>
+
+@*<div>
+        @using (Ajax.BeginForm("GetText", new AjaxOptions
+        {
+            //UpdateTargetId = "results", LoadingElementId = "loading" //, InsertionMode = InsertionMode.InsertAfter,
+            //OnBegin = "OnBegin",
+            //OnFailure = "OnFailure",
+            //OnSuccess = "OnSuccess",
+            //OnComplete = "OnComplete"
+        }))
+        {
+            <input type="text" name="name" id="search"/>
+            <input type="button" id="submit" value="Поиск"/>
+        }
+
+        @Ajax.ActionLink("asdsad","GetText", new AjaxOptions() {UpdateTargetId = "results", HttpMethod = "POST", OnSuccess = "OnSuccess"})
+
+    </div>
+
+
+    <div id="results"></div>*@
+
+<div id="loading" style="display: none; color: Red; font-weight: bold;">
+    <p>Идет загрузка...</p>
+</div>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').click(function (e) {
+            e.preventDefault();
+            var name = $('#search').val();
+            name=encodeURIComponent(name);
+            $('#results').load('@Url.Action("GetText2", "Home")?name=' + name);
+        });
+    });
+</script>*@
+
+
+<input type="text" name="name" id="search" />
+<input type="button" id="submit" value='Поиск' />
+<div id="results"></div>
+
+<div id="list"  style="display:block">
+    <ul ><li>Item1</li><li>Item1</li><li>Item1</li><li>Item1</li></ul>
+</div>

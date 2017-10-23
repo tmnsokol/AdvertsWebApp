@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AdWebApp.Models.AdvertViewModel>
+
+@{
+    ViewBag.Title = "Adverts";
+}
+
+<script>
+    $(document).ready(function() {
+        $('#advertTable').DataTable(
+        {
+            "order": [],
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false
+            }],
+        });
+    });
+
+</script>
+
+<h2>Adverts</h2>
+<table id="advertTable" class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th class="col-md-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th class="no-sort">
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th class="no-sort"></th>
+            <th class="no-sort"></th>
+
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+
+                @if (Request.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                }
+            </tr>
+        }
+
+</table>
