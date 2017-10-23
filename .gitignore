@@ -1,1 +1,6 @@
 AdWebApp/bin
+AdWebApp/obj
+AdApp.BLL/bin
+AdApp.BLL/obj
+AdApp.DAL/bin
+AdApp.DAL/obj
