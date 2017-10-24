@@ -96,18 +96,21 @@ namespace AdWebApp.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Index()
         {
             var clientProfiles = await UserService.GetClientProfiles();
             return View(clientProfiles.ToViewModel());
         }
 
+        [Authorize]
         public async Task<ActionResult> Details(string id)
         {
             var clientProfileDto = await UserService.GetClientProfileById(id);
             return View(clientProfileDto.ToViewModel());
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(string id)
         {
             var userId = User.Identity.GetUserId();
@@ -121,6 +124,7 @@ namespace AdWebApp.Controllers
         }
 
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<ActionResult> Delete(ClientProfileModel clientProfileModel)
         {
