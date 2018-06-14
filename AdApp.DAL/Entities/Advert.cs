@@ -8,6 +8,4 @@ namespace AdApp.DAL.Entities
         public string Content { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
-
-
 }
